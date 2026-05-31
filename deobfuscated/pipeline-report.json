@@ -1,0 +1,85 @@
+{
+  "inputPath": "D:\\桌面\\爬虫js逆向\\155-ave.ai\\vemachine.js",
+  "outputDir": "D:\\桌面\\爬虫js逆向\\155-ave.ai\\deobfuscated",
+  "hint": "cn-bidding-ob",
+  "selectedPattern": {
+    "id": "cn-bidding-ob",
+    "displayName": "cn-bidding-ob",
+    "reference": "references/patterns/cn-bidding-ob.md",
+    "families": [
+      "ob-variant"
+    ],
+    "notes": [
+      "Keep OB-family tweaks in a dedicated adapter so the common pipeline stays conservative.",
+      "Track remaining loop-switch residue after the OB adapter stage."
+    ]
+  },
+  "detections": [
+    {
+      "id": "cn-bidding-ob",
+      "score": 13,
+      "reasons": [
+        "hint:ob",
+        "content:/\\b_0x[a-f0-9]+\\b/i"
+      ]
+    },
+    {
+      "id": "mps-ob",
+      "score": 13,
+      "reasons": [
+        "hint:ob",
+        "content:/\\b_0x[a-f0-9]+\\b/i"
+      ]
+    }
+  ],
+  "steps": [
+    {
+      "id": "normalize",
+      "script": "normalize-structure.js",
+      "outputFile": "01_normalize.js",
+      "timeoutMs": 60000,
+      "durationMs": 901,
+      "status": "ok",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "error": ""
+    },
+    {
+      "id": "prune",
+      "script": "prune-fake-branches.js",
+      "outputFile": "02_prune.js",
+      "timeoutMs": 60000,
+      "durationMs": 619,
+      "status": "ok",
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "",
+      "error": ""
+    },
+    {
+      "id": "inline_dispatchers",
+      "script": "inline-dispatchers.js",
+      "outputFile": "03_inline_dispatchers.js",
+      "timeoutMs": 120000,
+      "durationMs": 445,
+      "status": "failed",
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "C:\\Users\\86181\\.claude\\skills\\ast-deobfuscation\\node_modules\\@babel\\types\\lib\\definitions\\utils.js:123\r\n    throw new TypeError(`Property ${key} of ${node.type} expected node to be of a type ${JSON.stringify(types)} but instead got ${JSON.stringify(valType)}`);\r\n    ^\r\n\r\nTypeError: Property left of AssignmentExpression expected node to be of a type [\"LVal\",\"OptionalMemberExpression\"] but instead got \"NumericLiteral\"\r\n    at Object.validate (C:\\Users\\86181\\.claude\\skills\\ast-deobfuscation\\node_modules\\@babel\\types\\lib\\definitions\\utils.js:123:11)\r\n    at validateField (C:\\Users\\86181\\.claude\\skills\\ast-deobfuscation\\node_modules\\@babel\\types\\lib\\validators\\validate.js:33:9)\r\n    at validate (C:\\Users\\86181\\.claude\\skills\\ast-deobfuscation\\node_modules\\@babel\\types\\lib\\validators\\validate.js:16:3)\r\n    at NodePath._replaceWith (C:\\Users\\86181\\.claude\\skills\\ast-deobfuscation\\node_modules\\@babel\\traverse\\lib\\path\\replacement.js:141:5)\r\n    at NodePath.replaceWith (C:\\Users\\86181\\.claude\\skills\\ast-deobfuscation\\node_modules\\@babel\\traverse\\lib\\path\\replacement.js:127:16)\r\n    at MemberExpression (C:\\Users\\86181\\.claude\\skills\\ast-deobfuscation\\scripts\\inline-dispatchers.js:104:14)\r\n    at NodePath._call (C:\\Users\\86181\\.claude\\skills\\ast-deobfuscation\\node_modules\\@babel\\traverse\\lib\\path\\context.js:50:20)\r\n    at NodePath.call (C:\\Users\\86181\\.claude\\skills\\ast-deobfuscation\\node_modules\\@babel\\traverse\\lib\\path\\context.js:40:18)\r\n    at NodePath.visit (C:\\Users\\86181\\.claude\\skills\\ast-deobfuscation\\node_modules\\@babel\\traverse\\lib\\path\\context.js:87:31)\r\n    at TraversalContext.visitQueue (C:\\Users\\86181\\.claude\\skills\\ast-deobfuscation\\node_modules\\@babel\\traverse\\lib\\context.js:96:16)\r\n\r\nNode.js v20.19.0",
+      "error": ""
+    }
+  ],
+  "status": "failed",
+  "failedStep": "inline_dispatchers",
+  "lastGoodFile": "02_prune.js",
+  "finalMetrics": {
+    "filePath": "D:\\桌面\\爬虫js逆向\\155-ave.ai\\deobfuscated\\final.js",
+    "lineCount": 3179,
+    "splitPipeCount": 0,
+    "loopSwitchCount": 0,
+    "opcodeIfChainCount": 0,
+    "dispatcherWrapperCount": 0,
+    "hexIdentifierCount": 6858
+  }
+}

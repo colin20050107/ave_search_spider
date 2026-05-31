@@ -1,0 +1,8 @@
+{
+  "enabledMcpjsonServers": [
+    "chrome-devtools",
+    "js-reverse",
+    "superdoc",
+    "camoufox-reverse"
+  ]
+}

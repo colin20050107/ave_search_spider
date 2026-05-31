@@ -1,0 +1,33 @@
+{
+  "bestId": "cn-bidding-ob",
+  "detections": [
+    {
+      "id": "cn-bidding-ob",
+      "score": 13,
+      "reasons": [
+        "hint:ob",
+        "content:/\\b_0x[a-f0-9]+\\b/i"
+      ]
+    },
+    {
+      "id": "mps-ob",
+      "score": 13,
+      "reasons": [
+        "hint:ob",
+        "content:/\\b_0x[a-f0-9]+\\b/i"
+      ]
+    }
+  ],
+  "selectedPattern": {
+    "id": "cn-bidding-ob",
+    "displayName": "cn-bidding-ob",
+    "reference": "references/patterns/cn-bidding-ob.md",
+    "families": [
+      "ob-variant"
+    ],
+    "notes": [
+      "Keep OB-family tweaks in a dedicated adapter so the common pipeline stays conservative.",
+      "Track remaining loop-switch residue after the OB adapter stage."
+    ]
+  }
+}
